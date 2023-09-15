@@ -1,5 +1,7 @@
+import Chat from "./components/Container";
+
 const App = () => {
-	return <div>Test</div>;
+	return <Chat></Chat>;
 };
 
 export default App;
