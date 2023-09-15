@@ -9,7 +9,11 @@
 
 :root {
 	/*colors*/
-	--color-bg-primary: #eceef1;
+	--color-bg-primaryLight: #eceef1;
+	--color-bg-primaryDark: #023168;
+	--color-bg-secondaryLight: #ffffff;
+	--color-text-primaryDark: #333333;
+	--color-text-primaryLight: #82878d;
 }
 
 html {
@@ -17,7 +21,7 @@ html {
 } /*16px*/
 
 body {
-	background-color: #023168;
+	background-color: var(--color-bg-primaryDark);
 	font-family: "Inter", sans-serif;
 	margin: 0;
 	padding: 0;
@@ -29,10 +33,4 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-@media (max-width: 750px) {
-	.modal {
-		width: 90%;
-	}
 }
