@@ -5,7 +5,7 @@
 				"id": "2",
 				"author": {
 					"name": "Pero Pipovski",
-					"picture": "img/pero.jpg"
+					"picture": "pero.png"
 				},
 				"text": "Hey guys, here is a nice web for that comoplicated conversion. www.convertunits.com/from/MB/to/GB",
 				"timestamp": 1626861080278
@@ -14,7 +14,7 @@
 				"id": "1",
 				"author": {
 					"name": "Ivana Paradzikovic",
-					"picture": "img/ivana.jpg"
+					"picture": "ivana.png"
 				},
 				"text": "Hello there, so I was wondering if you know how much MB is in a GB?",
 				"timestamp": 414514740000
@@ -24,7 +24,7 @@
 				"parent_id": "1",
 				"author": {
 					"name": "Zmaj Sipovski",
-					"picture": "img/zmaj.jpg"
+					"picture": "zmaj.png"
 				},
 				"text": "Hey Ivana! Have you tried Googling that?",
 				"timestamp": 414514860000
@@ -34,7 +34,7 @@
 				"parent_id": "1",
 				"author": {
 					"name": "Ines Grah",
-					"picture": "img/ines.jpg"
+					"picture": "ines.png"
 				},
 				"text": "Zmaj has a point, tho I’d say its about 1000MB in a GB.",
 				"timestamp": 414516900000
@@ -44,7 +44,7 @@
 				"parent_id": "3",
 				"author": {
 					"name": "Luka K",
-					"picture": "img/luka.jpg"
+					"picture": null
 				},
 				"text": "Sve je okej",
 				"timestamp": 414516912345
@@ -54,7 +54,7 @@
 				"parent_id": "5",
 				"author": {
 					"name": "Luka K",
-					"picture": "img/luka.jpg"
+					"picture": null
 				},
 				"text": "Sve je okej 2",
 				"timestamp": 414516912389
@@ -64,7 +64,7 @@
 				"parent_id": "2",
 				"author": {
 					"name": "Luka K",
-					"picture": "img/luka.jpg"
+					"picture": null
 				},
 				"text": "Sve je okej 3",
 				"timestamp": 414516912467
