@@ -20,11 +20,13 @@ const Wrapper = styled.div`
 
 		.reply-connector {
 			position: absolute;
-			border: 2px 1xp 0px 0px solid black;
-			height: 20px;
+			border-bottom: 1px solid #d8dee7;
+			height: 50px;
+			border-left: 1px solid #d8dee7;
 			width: 20px;
-			top: 0;
-			left: 0;
+			top: -65px;
+			left: 0px;
+			border-radius: 4px;
 		}
 
 		.avatar-container {

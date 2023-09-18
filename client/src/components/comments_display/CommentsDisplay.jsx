@@ -95,7 +95,10 @@ const CommentsDisplay = () => {
 							index === 0 ||
 							!moment
 								.unix(comment.timestamp)
-								.isSame(moment.unix(comments[index - 1].timestamp), "day")
+								.isSame(
+									moment.unix(transformedComments[index - 1].timestamp),
+									"day"
+								)
 						}
 					></Comment>
 				);
