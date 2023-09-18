@@ -29,7 +29,7 @@ const CommentsDisplay = () => {
 
 	const transformComments = (comments) => {
 		// Flatten comment replies to one level
-		const getRepliesToComment = (comment) => {
+		/* const getRepliesToComment = (comment) => {
 			let repliesToComment = [];
 			if (comment.replies) {
 				comment.replies.forEach((replie) => {
@@ -41,7 +41,7 @@ const CommentsDisplay = () => {
 			}
 
 			return repliesToComment;
-		};
+		}; */
 
 		const sortComments = (comments) => {
 			return comments.sort((a, b) => a.timestamp - b.timestamp);
@@ -81,8 +81,6 @@ const CommentsDisplay = () => {
 		() => transformComments(comments),
 		[comments]
 	);
-
-	console.log(transformedComments);
 
 	return (
 		<Wrapper ref={commentsRef}>
