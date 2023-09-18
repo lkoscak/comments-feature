@@ -3,16 +3,34 @@ import styled from "styled-components";
 const Wrapper = styled.div`
 	width: 100%;
 	margin-bottom: 30px;
-
+	display: flex;
+	flex-direction: column;
+	.time-header {
+		font-size: 13px;
+		color: var(--color-text-primaryLight);
+		align-self: center;
+		padding: 30px 0px;
+	}
 	.container {
 		max-width: 80%;
 		display: flex;
 		justify-content: flex-start;
 		gap: 10px;
-		margin-left: ${({ isReply }) => (isReply ? "60px" : "0px")};
+		margin-left: ${({ replyLevel }) => `${replyLevel * 20}px`};
+
+		.reply-connector {
+			position: absolute;
+			border: 2px 1xp 0px 0px solid black;
+			height: 20px;
+			width: 20px;
+			top: 0;
+			left: 0;
+		}
+
 		.avatar-container {
 			align-self: flex-start;
 			height: 100%;
+			position: relative;
 
 			.avatar {
 				height: 48px;
@@ -23,6 +41,11 @@ const Wrapper = styled.div`
 
 			.avatar.no-img {
 				background-color: var(--color-bg-primaryDark);
+				color: #ffffff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 18px;
 			}
 		}
 
@@ -42,6 +65,7 @@ const Wrapper = styled.div`
 				background-color: var(--color-bg-secondaryLight);
 				gap: 10px;
 				padding: 20px;
+				min-width: 200px;
 
 				h3,
 				p {

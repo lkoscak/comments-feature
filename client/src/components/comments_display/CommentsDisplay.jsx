@@ -1,12 +1,31 @@
 import Wrapper from "../../assets/wrappers/CommentsDisplay";
-import commentsData from "../../assets/data/comments.json";
 import Comment from "./Comment";
-import { useState, useMemo } from "react";
+import { useMemo, useRef, useEffect } from "react";
+import moment from "moment";
+import useAppContext from "../../hooks/useAppContext";
 
 const CommentsDisplay = () => {
-	const [comments, setComments] = useState(
-		() => commentsData?.data.comments || []
-	);
+	const { comments, replyingToComment, replyToComment, latestReplyId } =
+		useAppContext();
+
+	const commentsRef = useRef(null);
+
+	useEffect(() => {
+		if (replyingToComment) {
+			commentsRef.current
+				?.querySelector(`#comment_${latestReplyId}`)
+				?.scrollIntoView({
+					behavior: "smooth",
+					block: "center",
+					inline: "center",
+				});
+			replyToComment(null);
+			return;
+		}
+		commentsRef.current?.lastElementChild?.scrollIntoView({
+			behavior: "smooth",
+		});
+	}, [comments]);
 
 	const transformComments = (comments) => {
 		// Flatten comment replies to one level
@@ -25,15 +44,11 @@ const CommentsDisplay = () => {
 		};
 
 		const sortComments = (comments) => {
-			comments.forEach((comment) => {
-				if (comment.replies && comment.replies.length > 0) {
-					comment.replies = comment.replies.sort(
-						(a, b) => a.timestamp - b.timestamp
-					);
-				}
-			});
 			return comments.sort((a, b) => a.timestamp - b.timestamp);
 		};
+
+		// sort comments by timestamp
+		comments = sortComments(comments);
 
 		// Create a map of comments using their IDs as keys for efficient lookup.
 		const commentMap = new Map();
@@ -55,11 +70,11 @@ const CommentsDisplay = () => {
 			}
 		});
 
-		topLevelComments.forEach((comment) => {
+		/* topLevelComments.forEach((comment) => {
 			comment.replies = getRepliesToComment(comment);
-		});
+		}) */
 
-		return sortComments(topLevelComments);
+		return topLevelComments;
 	};
 
 	const transformedComments = useMemo(
@@ -70,9 +85,20 @@ const CommentsDisplay = () => {
 	console.log(transformedComments);
 
 	return (
-		<Wrapper>
-			{transformedComments.map((comment) => {
-				return <Comment key={comment.id} comment={comment}></Comment>;
+		<Wrapper ref={commentsRef}>
+			{transformedComments.map((comment, index) => {
+				return (
+					<Comment
+						key={comment.id}
+						comment={comment}
+						shouldDisplayTimeHeader={
+							index === 0 ||
+							!moment
+								.unix(comment.timestamp)
+								.isSame(moment.unix(comments[index - 1].timestamp), "day")
+						}
+					></Comment>
+				);
 			})}
 		</Wrapper>
 	);
